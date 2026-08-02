@@ -8,76 +8,163 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --accent: #6fd9bd;
+      --accent-soft: rgba(111, 217, 189, 0.14);
+      --bg-deep: #0b0d0f;
+      --bg-card: #1c1e22;
+      --bg-card-hover: #232529;
+      --text-dim: #9aa0a8;
+      --text-faint: #6b7076;
+      --border: rgba(255, 255, 255, 0.07);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      padding: 0;
+      padding: 0 20px 70px;
       font-family: 'Inter', sans-serif;
-      background-color: #1d1d1d;
+      background:
+        radial-gradient(ellipse 60% 40% at 15% 0%, rgba(111, 217, 189, 0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 100% 15%, rgba(120, 140, 220, 0.08) 0%, transparent 60%),
+        var(--bg-deep);
+      background-attachment: fixed;
       color: white;
       display: flex;
       flex-direction: column;
       align-items: center;
+      min-height: 100vh;
+    }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 70px;
+    }
+
+    .monogram {
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+      border-radius: 14px;
+      background: linear-gradient(155deg, var(--accent), #3f9c86);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0b0d0f;
+      box-shadow: 0 8px 24px rgba(111, 217, 189, 0.25);
     }
 
     header {
-      margin-top: 30px;
-      font-size: 2.2rem;
-      font-weight: 800;
-    }
-
-    .subheader {
-      font-size: 1.3rem;
-      font-weight: 500;
-      margin-top: 6px;
-      opacity: 0.9;
-    }
-
-    /* Full-width project box */
-    .project-box {
-      width: 90%;
-      max-width: 1000px;
-      background-color: #2c2c2c;
-      padding: 20px 30px; /* reduced top padding */
-      box-sizing: border-box;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      display: flex;
-      gap: 30px;
-      flex-direction: column; /* allow subheader and content */
-      margin-top: 20px; /* less vertical space between boxes */
-    }
-
-    /* Slightly more hover effect spacing */
-    .project-box:hover {
-      background-color: #3d3d3d;
-    }
-
-    /* Project title and click info */
-    .project-title {
-      font-size: 1.5rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.3rem;
       font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
     }
 
-    /* Reduced margin to bring click info closer to title */
+    .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 32px;
+    }
+
+    .divider {
+      width: 100%;
+      max-width: 1000px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
+      margin: 22px 0 34px;
+    }
+
+    .project-box {
+      width: 100%;
+      max-width: 1000px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 32px 32px;
+      cursor: pointer;
+      transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    .project-box:hover {
+      background-color: var(--bg-card-hover);
+      border-color: rgba(111, 217, 189, 0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .project-box:hover .project-image {
+      transform: scale(1.04);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(111, 217, 189, 0.22);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .project-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+    }
+
     .project-extra {
-      font-size: 0.95rem;
-      font-style: italic;
-      color: #aaa;
-      margin-top: 2px; /* very close to title now */
-      margin-bottom: 10px;
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      margin-top: 4px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
 
-    /* Content row inside project box */
+    .project-extra .arrow {
+      color: var(--accent);
+      transition: transform 0.25s ease;
+    }
+
+    .project-box:hover .project-extra .arrow {
+      transform: translateX(3px);
+    }
+
     .project-content {
       display: flex;
       gap: 30px;
       flex-wrap: wrap;
     }
 
-    /* Left: image */
     .project-left {
       flex: 0 0 250px;
       display: flex;
@@ -85,28 +172,90 @@
       align-items: center;
     }
 
-    .project-image {
+    /* Fixed-ratio frame so every thumbnail reads the same size on the
+       grid, no matter its source image's native dimensions. */
+    .project-image-frame {
       width: 100%;
-      height: auto;
-      border-radius: 8px;
+      aspect-ratio: 4 / 3;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #131416;
+      border: 1px solid var(--border);
     }
 
-    /* Right: description */
+    .project-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
     .project-right {
       flex: 1;
+      min-width: 240px;
       display: flex;
       flex-direction: column;
       gap: 10px;
+      justify-content: center;
     }
 
     .project-desc {
-      font-size: 1rem;
-      line-height: 1.5;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.88);
       width: 100%;
     }
 
-    /* Responsive */
+    footer {
+      margin-top: 50px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-faint);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--text-dim);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    footer svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+    }
+
     @media (max-width: 800px) {
+      .masthead {
+        margin-top: 44px;
+        gap: 12px;
+      }
+
+      .monogram {
+        width: 42px;
+        height: 42px;
+        font-size: 1.25rem;
+        border-radius: 12px;
+      }
+
+      header {
+        font-size: 1.8rem;
+      }
+
+      .project-box {
+        padding: 24px 20px 28px;
+      }
+
       .project-content {
         flex-direction: column;
         align-items: center;
@@ -124,17 +273,27 @@
 </head>
 <body>
 
-  <header>Sonali Shaw</header>
-  <div class="subheader">Personal Projects</div>
+  <div class="masthead">
+    <div class="monogram">S</div>
+    <header>Sonali Shaw</header>
+  </div>
+  <div class="eyebrow">Personal Projects</div>
+  <div class="divider"></div>
 
   <!-- Bovine Body Condition Scoring box -->
   <div class="project-box" onclick="window.location.href='bovine.html'">
+    <div class="tag-row">
+      <span class="tag">Deep Learning</span>
+      <span class="tag">Research</span>
+    </div>
     <div class="project-title">Bovine Body Condition Scoring
     </div>
-    <div class="project-extra">Summer research done with Argonne National Labs and the UChicago Data Science Institute</div>
+    <div class="project-extra">Summer research done with Argonne National Labs and the UChicago Data Science Institute <span class="arrow">→</span></div>
     <div class="project-content">
       <div class="project-left">
-        <img src="images/poster.png" alt="Poster preview" class="project-image">
+        <div class="project-image-frame">
+          <img src="images/poster.png" alt="Poster preview" class="project-image">
+        </div>
       </div>
       <div class="project-right">
         <div class="project-desc">
@@ -144,13 +303,66 @@
     </div>
   </div>
 
-  <!-- Coloretto box -->
-  <div class="project-box" onclick="window.location.href='coloretto.html'">
-    <div class="project-title">Coloretto</div>
-    <div class="project-extra">Click here for code, demo, and more</div>
+  <!-- Odontogram box -->
+  <div class="project-box" onclick="window.location.href='odontogram.html'">
+    <div class="tag-row">
+      <span class="tag">Three.js</span>
+      <span class="tag">WebGL</span>
+    </div>
+    <div class="project-title">3D Odontogram
+    </div>
+    <div class="project-extra">Click here for code, demo, and more <span class="arrow">→</span></div>
     <div class="project-content">
       <div class="project-left">
-        <img src="images/coloretto.jpg" alt="Coloretto preview" class="project-image">
+        <div class="project-image-frame">
+          <img src="images/odontogram.png" alt="Odontogram preview" class="project-image">
+        </div>
+      </div>
+      <div class="project-right">
+        <div class="project-desc">
+          An interactive 3D dental charting tool built with Three.js, using real scanned tooth morphology models synced to a classic 2D odontogram map. Includes landmark annotation with JSON export and a flashcard mode for self-testing tooth identification.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cubex box -->
+  <div class="project-box" onclick="window.location.href='cubex.html'">
+    <div class="tag-row">
+      <span class="tag">Swift</span>
+      <span class="tag">SceneKit</span>
+      <span class="tag">iOS</span>
+    </div>
+    <div class="project-title">Cubex
+    </div>
+    <div class="project-extra">Click here for code, demo, and more <span class="arrow">→</span></div>
+    <div class="project-content">
+      <div class="project-left">
+        <div class="project-image-frame">
+          <img src="images/cubex.png" alt="Cubex preview" class="project-image">
+        </div>
+      </div>
+      <div class="project-right">
+        <div class="project-desc">
+          Cubex started as a back-end representation of a rubik's cube and its moves, and has grown into a full native iOS app: a 3D cube you can turn, orbit, and pinch-to-zoom around, with a complete step-by-step algorithmic solver. Camera-based cube scanning and a reinforcement learning solver are next.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coloretto box -->
+  <div class="project-box" onclick="window.location.href='coloretto.html'">
+    <div class="tag-row">
+      <span class="tag">Python</span>
+      <span class="tag">CLI</span>
+    </div>
+    <div class="project-title">Coloretto</div>
+    <div class="project-extra">Click here for code, demo, and more <span class="arrow">→</span></div>
+    <div class="project-content">
+      <div class="project-left">
+        <div class="project-image-frame">
+          <img src="images/coloretto.jpg" alt="Coloretto preview" class="project-image">
+        </div>
       </div>
       <div class="project-right">
         <div class="project-desc">
@@ -160,22 +372,12 @@
     </div>
   </div>
 
-  <!-- Cuber box -->
-  <div class="project-box" onclick="window.location.href='cuber.html'">
-    <div class="project-title">Cuber (In progress)
-    </div>
-    <div class="project-extra">Click here for code, demo, and more</div>
-    <div class="project-content">
-      <div class="project-left">
-        <img src="images/cube.png" alt="Cuber preview" class="project-image">
-      </div>
-      <div class="project-right">
-        <div class="project-desc">
-          Cuber is (currently) a back-end representation of a rubik's cube and it's moves. Future additions include a GUI, a human-readable algorithm based solver, a reinforcement learning based solver, and CNN cube image recognition.
-        </div>
-      </div>
-    </div>
-  </div>
+  <footer>
+    <a href="https://github.com/sonali-shaw" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      github.com/sonali-shaw
+    </a>
+  </footer>
 
 </body>
 </html>

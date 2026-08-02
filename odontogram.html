@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bovine Body Condition Scoring</title>
+  <title>Odontogram Project</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,14 +23,12 @@
       padding: 40px 20px;
     }
 
-    /* Header */
     header {
       font-size: 2.2rem;
       font-weight: 700;
       margin-bottom: 20px;
     }
 
-    /* Back button */
     .back-btn {
       background-color: #24292e;
       color: white;
@@ -47,7 +45,6 @@
       background-color: #3b4045;
     }
 
-    /* Project box */
     .project-box {
       width: 90%;
       max-width: 1000px;
@@ -64,9 +61,8 @@
       background-color: #3d3d3d;
     }
 
-    /* Left: image + GitHub */
     .project-left {
-      flex: 0 0 350px;
+      flex: 0 0 250px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -97,7 +93,6 @@
       background-color: #3b4045;
     }
 
-    /* Right: description */
     .project-right {
       flex: 1;
       display: flex;
@@ -112,7 +107,33 @@
       width: 100%;
     }
 
-    /* Responsive */
+    .feature-list {
+      width: 100%;
+      margin: 0;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .feature-list li {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .feature-list li::marker {
+      color: #6fd9bd;
+    }
+
+    .section-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #aaa;
+      margin: 10px 0 -4px;
+    }
+
     @media (max-width: 800px) {
       .project-box {
         flex-direction: column;
@@ -132,44 +153,36 @@
 </head>
 <body>
 
-  <!-- Header -->
-  <header>Bovine Body Condition Scoring</header>
+  <header>3D Odontogram</header>
 
-  <!-- Back button -->
   <button class="back-btn" onclick="window.location.href='index.html'">
     ← Back
   </button>
 
-  <!-- Project box -->
   <div class="project-box">
-    <!-- Left: Image + GitHub -->
     <div class="project-left">
-      <img src="images/poster.png" alt="Poster preview" class="project-image">
-      <button class="github-btn" onclick="window.open('https://drive.google.com/file/d/1B2OPJ0Xhask-Nrf8VOENgDPzwHFowl6M/view?usp=sharing', '_blank')">
-        Click for Poster
+      <img src="images/odontogram.png" alt="Odontogram preview" class="project-image">
+      <button class="github-btn" onclick="window.open('https://github.com/sonali-shaw/odontogram', '_blank')">
+        View on GitHub
       </button>
     </div>
 
-    <!-- Right: Description -->
     <div class="project-right">
       <div class="project-desc">
-        A deep learning system that predicts bovine body condition scores (BCS) from aerial images to help farmers assess livestock health more consistently and objectively. Using a fine-tuned ResNet18 and multiple image filters, the classification models achieved high accuracy, outperforming regression approaches and exploring AI-assisted scoring in the absence of a ground-truth. This work explores filtering strategies, classification vs regression, and future directions for unsupervised methods to improve animal welfare and farm management.
-        
-        <br> <br> <br>
+        An interactive 3D dental charting tool built with Three.js, using real scanned tooth morphology models
+        to let you explore each of the 32 adult teeth in three dimensions. A synced 2D dental arch map mirrors
+        the classic odontogram layout, so clicking a tooth in either view highlights it in the other. Built-in
+        landmark annotation and a flashcard-style study mode turn it into a self-quizzing tool for learning tooth
+        anatomy and numbering.
+      </div>
 
-        Explanatory Video:
-    </div>
-
-      <!-- Video placeholder -->
-    <div class="video-demo" style="width:100%; margin-top:20px;">
-    <iframe 
-        src="https://drive.google.com/file/d/1IxpoWnx-sWCOiufktE1z3K4GICweOXRd/preview" 
-        width="480" 
-        height="360"
-        allow="autoplay"
-    ></iframe>
-    </div>
-
+      <div class="section-label">Features</div>
+      <ul class="feature-list">
+        <li>Full 3D models for all 32 adult teeth, individually selectable</li>
+        <li>Synced 2D odontogram map with upper/lower arch layout</li>
+        <li>Landmark annotation with JSON export</li>
+        <li>Flashcard mode for self-testing tooth identification</li>
+      </ul>
     </div>
   </div>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cuber Project</title>
+  <title>Cubex Project</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,14 +23,12 @@
       padding: 40px 20px;
     }
 
-    /* Header */
     header {
       font-size: 2.2rem;
       font-weight: 700;
       margin-bottom: 20px;
     }
 
-    /* Back button */
     .back-btn {
       background-color: #24292e;
       color: white;
@@ -47,7 +45,6 @@
       background-color: #3b4045;
     }
 
-    /* Project box */
     .project-box {
       width: 90%;
       max-width: 1000px;
@@ -64,7 +61,6 @@
       background-color: #3d3d3d;
     }
 
-    /* Left: image + GitHub */
     .project-left {
       flex: 0 0 250px;
       display: flex;
@@ -97,7 +93,6 @@
       background-color: #3b4045;
     }
 
-    /* Right: description */
     .project-right {
       flex: 1;
       display: flex;
@@ -112,7 +107,37 @@
       width: 100%;
     }
 
-    /* Responsive */
+    .milestones {
+      width: 100%;
+      margin: 0;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .milestones li {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .milestones .done::marker {
+      color: #6fd9bd;
+    }
+
+    .milestones .next::marker {
+      color: #aaa;
+    }
+
+    .section-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #aaa;
+      margin: 10px 0 -4px;
+    }
+
     @media (max-width: 800px) {
       .project-box {
         flex-direction: column;
@@ -132,29 +157,37 @@
 </head>
 <body>
 
-  <!-- Header -->
-  <header>Cuber</header>
+  <header>Cubex</header>
 
-  <!-- Back button -->
   <button class="back-btn" onclick="window.location.href='index.html'">
     ← Back
   </button>
 
-  <!-- Project box -->
   <div class="project-box">
-    <!-- Left: Image + GitHub -->
     <div class="project-left">
-      <img src="images/cube.png" alt="Cuber preview" class="project-image">
-      <button class="github-btn" onclick="window.open('https://github.com/sonali-shaw/cube2', '_blank')">
+      <img src="images/cubex.png" alt="Cubex app preview" class="project-image">
+      <button class="github-btn" onclick="window.open('https://github.com/sonali-shaw/cubex', '_blank')">
         View on GitHub
       </button>
     </div>
 
-    <!-- Right: Description -->
     <div class="project-right">
       <div class="project-desc">
-        Cuber is (currently) a back-end representation of a rubik's cube and it's moves. Future additions include a GUI, a human-readable algorithm based solver, a reinforcement learning based solver, and CNN cube image recognition.
+        Cubex started as a backend representation of a Rubik's cube and its moves — pure state and move logic,
+        no visuals. It's since grown into a full native iOS app: a 3D cube rendered with SceneKit that you can
+        turn by dragging any sticker, orbit and pinch-to-zoom around, plus a complete solver that walks through
+        the classic layer-by-layer method one human-readable step at a time, with a "play all" mode, an undo/back
+        step, and a built-in guide explaining the cube's notation.
       </div>
+
+      <div class="section-label">Milestones</div>
+      <ul class="milestones">
+        <li class="done">Backend cube state &amp; move representation</li>
+        <li class="done">3D interactive GUI (SceneKit + SwiftUI)</li>
+        <li class="done">Human-readable, step-by-step algorithmic solver</li>
+        <li class="next">Camera-based cube scanning &amp; color recognition</li>
+        <li class="next">Reinforcement-learning-based solver</li>
+      </ul>
     </div>
   </div>
 
