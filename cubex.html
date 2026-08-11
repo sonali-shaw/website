@@ -93,6 +93,24 @@
       background-color: #3b4045;
     }
 
+    .demo-btn {
+      padding: 8px 20px;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background-color: #6fd9bd;
+      color: #0b0d0f;
+      font-weight: 700;
+      transition: 0.3s ease;
+      width: 100%;
+      text-align: center;
+    }
+
+    .demo-btn:hover {
+      background-color: #8ce4cd;
+    }
+
     .project-right {
       flex: 1;
       display: flex;
@@ -166,6 +184,9 @@
   <div class="project-box">
     <div class="project-left">
       <img src="images/cubex.png" alt="Cubex app preview" class="project-image">
+      <button class="demo-btn" onclick="window.open('https://sonali-shaw.github.io/cube-web/', '_blank')">
+        Play in Browser
+      </button>
       <button class="github-btn" onclick="window.open('https://github.com/sonali-shaw/cubex', '_blank')">
         View on GitHub
       </button>
@@ -174,16 +195,18 @@
     <div class="project-right">
       <div class="project-desc">
         Cubex started as a backend representation of a Rubik's cube and its moves — pure state and move logic,
-        no visuals. It's since grown into a full native iOS app: a 3D cube rendered with SceneKit that you can
-        turn by dragging any sticker, orbit and pinch-to-zoom around, plus a complete solver that walks through
-        the classic layer-by-layer method one human-readable step at a time, with a "play all" mode, an undo/back
-        step, and a built-in guide explaining the cube's notation.
+        no visuals. A Three.js web version came next (playable above, right in your browser), followed by a full
+        native iOS app: a 3D cube rendered with SceneKit that you can turn by dragging any sticker, orbit and
+        pinch-to-zoom around, plus a complete solver that walks through the classic layer-by-layer method one
+        human-readable step at a time, with a "play all" mode, an undo/back step, and a built-in guide explaining
+        the cube's notation.
       </div>
 
       <div class="section-label">Milestones</div>
       <ul class="milestones">
         <li class="done">Backend cube state &amp; move representation</li>
-        <li class="done">3D interactive GUI (SceneKit + SwiftUI)</li>
+        <li class="done">Interactive 3D web version (Three.js) — playable above</li>
+        <li class="done">Native iOS app (SceneKit + SwiftUI)</li>
         <li class="done">Human-readable, step-by-step algorithmic solver</li>
         <li class="next">Camera-based cube scanning &amp; color recognition</li>
         <li class="next">Reinforcement-learning-based solver</li>
