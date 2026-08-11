@@ -93,6 +93,24 @@
       background-color: #3b4045;
     }
 
+    .demo-btn {
+      padding: 8px 20px;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background-color: #6fd9bd;
+      color: #0b0d0f;
+      font-weight: 700;
+      transition: 0.3s ease;
+      width: 100%;
+      text-align: center;
+    }
+
+    .demo-btn:hover {
+      background-color: #8ce4cd;
+    }
+
     .project-right {
       flex: 1;
       display: flex;
@@ -162,6 +180,9 @@
   <div class="project-box">
     <div class="project-left">
       <img src="images/odontogram.png" alt="Odontogram preview" class="project-image">
+      <button class="demo-btn" onclick="window.open('https://sonali-shaw.github.io/odontogram/', '_blank')">
+        Live Demo
+      </button>
       <button class="github-btn" onclick="window.open('https://github.com/sonali-shaw/odontogram', '_blank')">
         View on GitHub
       </button>
