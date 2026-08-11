@@ -112,6 +112,33 @@
       width: 100%;
     }
 
+    .highlights {
+      width: 100%;
+      margin: 0;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .highlights li {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .highlights li::marker {
+      color: #6fd9bd;
+    }
+
+    .section-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #aaa;
+      margin: 10px 0 -4px;
+    }
+
     /* Responsive */
     @media (max-width: 800px) {
       .project-box {
@@ -153,11 +180,18 @@
     <!-- Right: Description -->
     <div class="project-right">
       <div class="project-desc">
-        A deep learning system that predicts bovine body condition scores (BCS) from aerial images to help farmers assess livestock health more consistently and objectively. Using a fine-tuned ResNet18 and multiple image filters, the classification models achieved high accuracy, outperforming regression approaches and exploring AI-assisted scoring in the absence of a ground-truth. This work explores filtering strategies, classification vs regression, and future directions for unsupervised methods to improve animal welfare and farm management.
-        
-        <br> <br> <br>
+        A deep learning system that predicts bovine body condition scores (BCS) from aerial images, built over a summer with Argonne National Laboratory and the UChicago Data Science Institute. BCS is normally assessed by an expert eyeballing and palpating an animal — subjective, inconsistent between observers, and slow to do at herd scale. This project reframes it as a computer vision problem: a fine-tuned ResNet18 trained on aerial imagery to give farmers a fast, repeatable, hands-off way to monitor livestock health and catch problems earlier.
+      </div>
 
-        Explanatory Video:
+      <div class="section-label">Highlights</div>
+      <ul class="highlights">
+        <li>Fine-tuned ResNet18 evaluated across multiple image-preprocessing filters (median, Laplacian, gradient-angle) to isolate which visual cues actually drive accurate scoring</li>
+        <li>Compared classification against regression framings of the same problem, informing which one a real deployment should use</li>
+        <li>Explored AI-assisted labeling strategies to work around the lack of ground-truth BCS data — a common bottleneck in applied agricultural ML</li>
+        <li>Presented findings via a research poster and explanatory video, linked below</li>
+      </ul>
+
+      <div class="section-label" style="margin-top: 20px;">Explanatory Video</div>
     </div>
 
       <!-- Video placeholder -->

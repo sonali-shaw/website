@@ -111,6 +111,33 @@
       width: 100%;
     }
 
+    .highlights {
+      width: 100%;
+      margin: 0;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .highlights li {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .highlights li::marker {
+      color: #6fd9bd;
+    }
+
+    .section-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #aaa;
+      margin: 10px 0 -4px;
+    }
+
     .video-demo {
       width: 100%;
       max-width: 350px;
@@ -171,8 +198,16 @@
     <!-- Right: Description + Video -->
     <div class="project-right">
       <div class="project-desc">
-        This Python program implements a fully playable, terminal-based version of the board/card game Coloretto. Players draw and take colored cards to strategically build their hands and maximize points, with the game handling multiple players, dynamic stacks, scoring, and the final round. What makes it especially cool is its visual presentation in the terminal using ASCII-style tiles and rich formatting, creating a clear, interactive, and visually appealing interface. The code also showcases advanced programming concepts like object-oriented design, game state management, input validation, and modularity, making it both a fun game and a strong example of complex Python development.
+        A fully playable, terminal-based implementation of Coloretto, the card-drafting board game — built from the ground up in Python with no game engine or framework, just the rules and a clean object model. Players draw from a shared pool of face-up stacks or take a stack outright, racing to build the highest-scoring hand across the full multi-round game, endgame trigger included.
       </div>
+
+      <div class="section-label">Highlights</div>
+      <ul class="highlights">
+        <li>Complete rules implementation: card drawing, dynamic face-up stacks, 2–4 player turn order, scoring, and the final-round trigger</li>
+        <li>Object-oriented architecture that cleanly separates game state, players, and I/O — the kind of structure a real multiplayer or GUI version could build on directly</li>
+        <li>Rich-formatted, ASCII-style terminal interface that makes card stacks and hands genuinely readable at a glance, not just a wall of text</li>
+        <li>Defensive input validation throughout, so a mistyped command never corrupts game state</li>
+      </ul>
 
       <!-- Video placeholder -->
       <div class="video-demo">
