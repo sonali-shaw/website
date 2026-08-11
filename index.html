@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sonali Shaw — Projects</title>
+  <title>Sonali Shaw</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -207,6 +207,137 @@
       width: 100%;
     }
 
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .hero-meta a {
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .hero-meta a:hover {
+      color: var(--accent);
+    }
+
+    .resume-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #0b0d0f;
+      background: var(--accent);
+      padding: 8px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .resume-btn:hover {
+      background: #8ce4cd;
+    }
+
+    .section-eyebrow {
+      width: 100%;
+      max-width: 1000px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 8px;
+    }
+
+    .resume-card {
+      width: 100%;
+      max-width: 1000px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 32px;
+      box-sizing: border-box;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+      margin-top: 14px;
+    }
+
+    .entry + .entry {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px 16px;
+    }
+
+    .entry-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1.02rem;
+    }
+
+    .entry-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    .entry-dates {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .entry-bullets {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .entry-bullets li {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .entry-bullets li::marker {
+      color: var(--accent);
+    }
+
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skills-row .tag {
+      font-size: 0.78rem;
+      padding: 5px 12px;
+    }
+
     footer {
       margin-top: 50px;
       display: flex;
@@ -256,6 +387,15 @@
         padding: 24px 20px 28px;
       }
 
+      .resume-card {
+        padding: 22px 20px;
+      }
+
+      .entry-header {
+        flex-direction: column;
+        gap: 2px;
+      }
+
       .project-content {
         flex-direction: column;
         align-items: center;
@@ -277,7 +417,237 @@
     <div class="monogram">S</div>
     <header>Sonali Shaw</header>
   </div>
-  <div class="eyebrow">Personal Projects</div>
+  <div class="hero-tagline">Computer Science × Machine Learning — University of Chicago</div>
+  <div class="hero-meta">
+    <span>Chicago, IL</span>
+    <a href="mailto:sonali.rebecca.shaw@gmail.com">sonali.rebecca.shaw@gmail.com</a>
+    <a href="resume.pdf" class="resume-btn" target="_blank" rel="noopener">Download Resume (PDF)</a>
+  </div>
+  <div class="divider"></div>
+
+  <!-- ========== Education ========== -->
+  <div class="section-eyebrow">Education</div>
+  <div class="resume-card">
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">University of Chicago</div>
+          <div class="entry-subtitle">Major GPA: 4.0 / 4.0 · GPA: 3.9 / 4.0</div>
+        </div>
+        <div class="entry-dates">Expected Graduation 2029</div>
+      </div>
+      <ul class="entry-bullets">
+        <li>Major in Computer Science with an intended specialization in Machine Learning, minor in Chemistry</li>
+        <li>Relevant coursework: Python programming, systems programming, proof-based discrete mathematics, linear algebra, multivariable calculus, differential equations, honors chemistry, biology, humanities</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title">University of Chicago Computational Life Sciences Cohort</div>
+        <div class="entry-dates">September 2025 – June 2026</div>
+      </div>
+      <ul class="entry-bullets">
+        <li>Accepted into a highly selective cohort for students to learn, research, and explore careers at the intersection of computer science and biology</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">University of Chicago Laboratory Schools</div>
+          <div class="entry-subtitle">GPA: 3.98 / 4.0</div>
+        </div>
+        <div class="entry-dates">September 2021 – June 2025</div>
+      </div>
+      <ul class="entry-bullets">
+        <li>Relevant courses: Linear Algebra & Multivariable Calculus, AP Calculus BC, Discrete Math & Statistics, AP Computer Science, AT Physics, AT Biology, AT Accelerated Chemistry</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title">Inspirit AI: Introduction to Artificial Intelligence and Machine Learning</div>
+        <div class="entry-dates">December 2022 – January 2023</div>
+      </div>
+      <ul class="entry-bullets">
+        <li>Developed several versions of a Python program that analyzed the sentiment of tweets to predict stock market changes</li>
+        <li>Relevant topics: linear regression, logistic regression, NLP, neural networks, and CNNs</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title">Harvard Summer Session: Molecular Oncology</div>
+        <div class="entry-dates">July 2023 – August 2023</div>
+      </div>
+      <ul class="entry-bullets">
+        <li>Residential summer program covering cancer biology and wet lab techniques used for research</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ========== Technical Experience ========== -->
+  <div class="section-eyebrow">Technical Experience</div>
+  <div class="resume-card">
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">University of Chicago Data For Common Good</div>
+          <div class="entry-subtitle">Software Engineer</div>
+        </div>
+        <div class="entry-dates">June 2026 – August 2026</div>
+      </div>
+      <ul class="entry-bullets">
+        <li>Engineered backend data infrastructure for a clinical research platform, from schema-driven tooling to synthetic data generation</li>
+        <li>Debugged and resolved complex full-stack issues in a production-grade clinical trial matching web application</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Argonne National Labs & University of Chicago Data Science Institute</div>
+          <div class="entry-subtitle">Research Assistant</div>
+        </div>
+        <div class="entry-dates">June 2024 – August 2024</div>
+      </div>
+      <ul class="entry-bullets">
+        <li>Designed and fine-tuned CNNs to analyze aerial bovine imagery and predict bovine body composition</li>
+        <li>Utilized several different technical approaches (classification/regression), finally achieving 94–97% accuracy</li>
+        <li>Participated in several presentations and a final research symposium</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Global IP Law Group</div>
+          <div class="entry-subtitle">Software Developer Intern</div>
+        </div>
+        <div class="entry-dates">June 2023 – July 2023</div>
+      </div>
+      <ul class="entry-bullets">
+        <li>Designed and implemented a tool to automate claim chart generation given a patent number using web crawling and web scraping</li>
+        <li>Utilized NLP for semantic analysis of claim chart language</li>
+        <li>Deployed tool as a user-friendly website integrated with AWS</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Director of Student Technology Services, UChicago Lab Schools</div>
+          <div class="entry-subtitle">Student Council, Executive Board</div>
+        </div>
+        <div class="entry-dates">September 2023 – June 2025</div>
+      </div>
+      <ul class="entry-bullets">
+        <li>Developed and augmented the student council website using React and Firebase (~700 users)</li>
+        <li>Integrated the Borda voting system for all-school student council elections</li>
+        <li>Served on the student council executive board, organized events, and participated in bills</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Standard ML Tutor</div>
+          <div class="entry-subtitle">Teacher's Assistant</div>
+        </div>
+        <div class="entry-dates">September 2024 – June 2025</div>
+      </div>
+      <ul class="entry-bullets">
+        <li>Assisted in teaching functional programming for a younger student (age 10) while concurrently learning the material</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">SCUBA: Summer Coding at UChicago: Builder's Academy</div>
+          <div class="entry-subtitle">UChicago Hillel Center — Summer Intern</div>
+        </div>
+        <div class="entry-dates">June 2025 – July 2025</div>
+      </div>
+      <ul class="entry-bullets">
+        <li>Assisted in developing written material (teacher's manual and exercises) for teaching high school students introductory Python</li>
+        <li>Assisted in managing a large fundraising database</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">O2M Technologies</div>
+          <div class="entry-subtitle">Research Assistant</div>
+        </div>
+        <div class="entry-dates">May 2025 – June 2025</div>
+      </div>
+      <ul class="entry-bullets">
+        <li>Assisted in the purification of OX071 and the synthesis of HOPE71</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Advanced Chemistry (AT Accelerated Chemistry)</div>
+          <div class="entry-subtitle">Teacher's Assistant</div>
+        </div>
+        <div class="entry-dates">September 2024 – June 2025</div>
+      </div>
+      <ul class="entry-bullets">
+        <li>Prepared and assisted with labs, guided students in developing procedures, assisted with written lab reports, provided study help</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ========== Leadership & Awards ========== -->
+  <div class="section-eyebrow">Leadership &amp; Awards</div>
+  <div class="resume-card">
+    <div class="entry">
+      <ul class="entry-bullets" style="margin-top:0;">
+        <li>American Computer Science League Finals Qualifier (International level)</li>
+        <li>Science Olympiad: 1st place in Bridge, Cell Biology, Code Busters, and Fermi Questions at Regionals (Illinois, 2023)</li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title">Captain, Varsity Dance Team</div>
+        <div class="entry-dates">October 2023 – June 2025</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== Skills ========== -->
+  <div class="section-eyebrow">Skills</div>
+  <div class="resume-card">
+    <div class="skills-row">
+      <span class="tag">Python</span>
+      <span class="tag">C</span>
+      <span class="tag">Java</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">Standard ML</span>
+      <span class="tag">PyTorch</span>
+      <span class="tag">NumPy</span>
+      <span class="tag">pandas</span>
+      <span class="tag">scikit-learn</span>
+      <span class="tag">Matplotlib</span>
+      <span class="tag">React</span>
+      <span class="tag">Node.js</span>
+      <span class="tag">Firebase</span>
+      <span class="tag">Git/GitHub</span>
+      <span class="tag">AWS</span>
+      <span class="tag">CNNs</span>
+      <span class="tag">NLP</span>
+      <span class="tag">Regression &amp; Classification Modeling</span>
+      <span class="tag">Web Scraping &amp; Crawling</span>
+    </div>
+  </div>
+
+  <!-- ========== Projects ========== -->
+  <div class="section-eyebrow">Projects</div>
   <div class="divider"></div>
 
   <!-- Odontogram box -->
