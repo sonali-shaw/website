@@ -8,107 +8,121 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --accent: #6fd9bd;
+      --accent-soft: rgba(111, 217, 189, 0.14);
+      --bg-deep: #0b0d0f;
+      --bg-card: #1c1e22;
+      --text-dim: #9aa0a8;
+      --border: rgba(255, 255, 255, 0.07);
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      padding: 0;
+      padding: 40px 20px 70px;
       font-family: 'Inter', sans-serif;
-      background-color: #1d1d1d;
+      background:
+        radial-gradient(ellipse 60% 40% at 15% 0%, rgba(111, 217, 189, 0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 100% 15%, rgba(120, 140, 220, 0.08) 0%, transparent 60%),
+        var(--bg-deep);
+      background-attachment: fixed;
       color: white;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40px 20px;
     }
 
-    /* Header */
     header {
-      font-size: 2.2rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
       font-weight: 700;
+      letter-spacing: -0.01em;
       margin-bottom: 20px;
+      text-align: center;
     }
 
-    /* Back button */
     .back-btn {
-      background-color: #24292e;
+      background: rgba(255, 255, 255, 0.06);
       color: white;
-      border: none;
+      border: 1px solid var(--border);
       padding: 8px 20px;
-      border-radius: 6px;
+      border-radius: 999px;
       cursor: pointer;
+      font: inherit;
       font-weight: 600;
+      font-size: 0.85rem;
       margin-bottom: 30px;
-      transition: 0.3s ease;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
     }
 
     .back-btn:hover {
-      background-color: #3b4045;
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.18);
     }
 
-    /* Project box */
     .project-box {
       width: 90%;
       max-width: 1000px;
-      background-color: #2c2c2c;
-      padding: 40px 30px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 36px 32px;
       box-sizing: border-box;
-      border-radius: 12px;
+      border-radius: 18px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
       display: flex;
-      gap: 30px;
-      transition: background-color 0.3s ease;
+      gap: 32px;
     }
 
-    .project-box:hover {
-      background-color: #3d3d3d;
-    }
-
-    /* Left: image + GitHub */
     .project-left {
-      flex: 0 0 350px;
+      flex: 0 0 320px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .project-image {
       width: 100%;
       height: auto;
-      border-radius: 8px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      display: block;
     }
 
-    .github-btn {
-      padding: 8px 20px;
+    .demo-btn {
+      padding: 10px 20px;
       font-size: 0.9rem;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
-      background-color: #24292e;
-      color: white;
-      font-weight: 600;
-      transition: 0.3s ease;
+      background-color: var(--accent);
+      color: #0b0d0f;
+      font-weight: 700;
+      transition: background-color 0.2s ease;
       width: 100%;
       text-align: center;
     }
 
-    .github-btn:hover {
-      background-color: #3b4045;
-    }
+    .demo-btn:hover { background-color: #8ce4cd; }
 
-    /* Right: description */
     .project-right {
       flex: 1;
+      min-width: 0;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 14px;
       align-items: flex-start;
     }
 
     .project-desc {
       font-size: 1rem;
-      line-height: 1.5;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
       width: 100%;
     }
 
@@ -118,66 +132,70 @@
       padding-left: 20px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 7px;
     }
 
     .highlights li {
       font-size: 0.95rem;
-      line-height: 1.5;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.88);
     }
 
-    .highlights li::marker {
-      color: #6fd9bd;
-    }
+    .highlights li::marker { color: var(--accent); }
 
     .section-label {
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #aaa;
-      margin: 10px 0 -4px;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+      margin: 6px 0 -6px;
     }
 
-    /* Responsive */
+    .video-frame {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #131416;
+    }
+
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
     @media (max-width: 800px) {
       .project-box {
         flex-direction: column;
         align-items: center;
-        padding: 30px;
+        padding: 26px 22px;
       }
 
-      .project-left {
-        width: 60%;
-      }
-
-      .project-right {
-        width: 100%;
-      }
+      .project-left { width: 100%; }
+      .project-right { width: 100%; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header>Bovine Body Condition Scoring</header>
 
-  <!-- Back button -->
   <button class="back-btn" onclick="window.location.href='index.html'">
     ← Back
   </button>
 
-  <!-- Project box -->
   <div class="project-box">
-    <!-- Left: Image + GitHub -->
     <div class="project-left">
       <img src="images/poster.png" alt="Poster preview" class="project-image">
-      <button class="github-btn" onclick="window.open('https://drive.google.com/file/d/1B2OPJ0Xhask-Nrf8VOENgDPzwHFowl6M/view?usp=sharing', '_blank')">
-        Click for Poster
+      <button class="demo-btn" onclick="window.open('https://drive.google.com/file/d/1B2OPJ0Xhask-Nrf8VOENgDPzwHFowl6M/view?usp=sharing', '_blank')">
+        View Poster
       </button>
     </div>
 
-    <!-- Right: Description -->
     <div class="project-right">
       <div class="project-desc">
         A deep learning system that predicts bovine body condition scores (BCS) from aerial images, built over a summer with Argonne National Laboratory and the UChicago Data Science Institute. BCS is normally assessed by an expert eyeballing and palpating an animal — subjective, inconsistent between observers, and slow to do at herd scale. This project reframes it as a computer vision problem: a fine-tuned ResNet18 trained on aerial imagery to give farmers a fast, repeatable, hands-off way to monitor livestock health and catch problems earlier.
@@ -188,22 +206,16 @@
         <li>Fine-tuned ResNet18 evaluated across multiple image-preprocessing filters (median, Laplacian, gradient-angle) to isolate which visual cues actually drive accurate scoring</li>
         <li>Compared classification against regression framings of the same problem, informing which one a real deployment should use</li>
         <li>Explored AI-assisted labeling strategies to work around the lack of ground-truth BCS data — a common bottleneck in applied agricultural ML</li>
-        <li>Presented findings via a research poster and explanatory video, linked below</li>
+        <li>Presented findings via a research poster and explanatory video, below</li>
       </ul>
 
-      <div class="section-label" style="margin-top: 20px;">Explanatory Video</div>
-    </div>
-
-      <!-- Video placeholder -->
-    <div class="video-demo" style="width:100%; margin-top:20px;">
-    <iframe 
-        src="https://drive.google.com/file/d/1IxpoWnx-sWCOiufktE1z3K4GICweOXRd/preview" 
-        width="480" 
-        height="360"
-        allow="autoplay"
-    ></iframe>
-    </div>
-
+      <div class="section-label">Explanatory Video</div>
+      <div class="video-frame">
+        <iframe
+          src="https://drive.google.com/file/d/1IxpoWnx-sWCOiufktE1z3K4GICweOXRd/preview"
+          allow="autoplay"
+        ></iframe>
+      </div>
     </div>
   </div>
 
