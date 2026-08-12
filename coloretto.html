@@ -8,62 +8,76 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --accent: #6fd9bd;
+      --accent-soft: rgba(111, 217, 189, 0.14);
+      --bg-deep: #0b0d0f;
+      --bg-card: #1c1e22;
+      --text-dim: #9aa0a8;
+      --border: rgba(255, 255, 255, 0.07);
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      padding: 0;
+      padding: 40px 20px 70px;
       font-family: 'Inter', sans-serif;
-      background-color: #1d1d1d;
+      background:
+        radial-gradient(ellipse 60% 40% at 15% 0%, rgba(111, 217, 189, 0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 100% 15%, rgba(120, 140, 220, 0.08) 0%, transparent 60%),
+        var(--bg-deep);
+      background-attachment: fixed;
       color: white;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40px 20px;
     }
 
-    /* Header */
     header {
-      font-size: 2.2rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
       font-weight: 700;
+      letter-spacing: -0.01em;
       margin-bottom: 20px;
+      text-align: center;
     }
 
     .back-btn {
-      background-color: #24292e;
+      background: rgba(255, 255, 255, 0.06);
       color: white;
-      border: none;
+      border: 1px solid var(--border);
       padding: 8px 20px;
-      border-radius: 6px;
+      border-radius: 999px;
       cursor: pointer;
+      font: inherit;
       font-weight: 600;
+      font-size: 0.85rem;
       margin-bottom: 30px;
-      transition: 0.3s ease;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
     }
 
     .back-btn:hover {
-      background-color: #3b4045;
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.18);
     }
 
-    /* Project box */
     .project-box {
       width: 90%;
       max-width: 1000px;
-      background-color: #2c2c2c;
-      padding: 40px 30px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 36px 32px;
       box-sizing: border-box;
-      border-radius: 12px;
+      border-radius: 18px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
       display: flex;
-      gap: 30px;
-      transition: background-color 0.3s ease;
+      gap: 32px;
     }
 
-    .project-box:hover {
-      background-color: #3d3d3d;
-    }
-
-    /* Left: image + GitHub */
     .project-left {
       flex: 0 0 250px;
       display: flex;
@@ -75,39 +89,42 @@
     .project-image {
       width: 100%;
       height: auto;
-      border-radius: 8px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      display: block;
     }
 
     .github-btn {
-      padding: 8px 20px;
+      padding: 10px 20px;
       font-size: 0.9rem;
-      border: none;
-      border-radius: 6px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
       cursor: pointer;
-      background-color: #24292e;
+      background-color: rgba(255, 255, 255, 0.06);
       color: white;
       font-weight: 600;
-      transition: 0.3s ease;
+      transition: background-color 0.2s ease;
       width: 100%;
       text-align: center;
     }
 
     .github-btn:hover {
-      background-color: #3b4045;
+      background-color: rgba(255, 255, 255, 0.12);
     }
 
-    /* Right: description + video */
     .project-right {
       flex: 1;
+      min-width: 0;
       display: flex;
       flex-direction: column;
-      gap: 15px;
-      align-items: center; /* centers the video */
+      gap: 14px;
+      align-items: flex-start;
     }
 
     .project-desc {
       font-size: 1rem;
-      line-height: 1.5;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
       width: 100%;
     }
 
@@ -117,77 +134,189 @@
       padding-left: 20px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 7px;
     }
 
     .highlights li {
       font-size: 0.95rem;
-      line-height: 1.5;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.88);
     }
 
-    .highlights li::marker {
-      color: #6fd9bd;
-    }
+    .highlights li::marker { color: var(--accent); }
 
     .section-label {
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #aaa;
-      margin: 10px 0 -4px;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+      margin: 6px 0 -6px;
     }
 
-    .video-demo {
-      width: 100%;
-      max-width: 350px;
-      height: 200px;
-      background-color: #111;
-      border-radius: 8px;
+    /* ---------- Technical Deep Dive ---------- */
+    .deep-dive-eyebrow {
+      width: 90%;
+      max-width: 1000px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 50px;
+    }
+
+    .deep-dive-heading {
+      width: 90%;
+      max-width: 1000px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    .deep-dive-card {
+      width: 90%;
+      max-width: 1000px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 32px;
+      box-sizing: border-box;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+      margin-top: 20px;
+    }
+
+    .dd-subhead {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0 0 10px;
+    }
+
+    .dd-block + .dd-block {
+      margin-top: 26px;
+      padding-top: 26px;
+      border-top: 1px solid var(--border);
+    }
+
+    .dd-block p {
+      font-size: 0.97rem;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.85);
+      margin: 0 0 10px;
+    }
+
+    .dd-block ul {
+      margin: 0;
+      padding-left: 20px;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #aaa;
-      font-size: 0.95rem;
+      flex-direction: column;
+      gap: 6px;
     }
 
-    /* Responsive */
+    .dd-block li {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .dd-block li::marker { color: var(--accent); }
+
+    .dd-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .dd-tags .tag {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(111, 217, 189, 0.22);
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+
+    .dd-caption {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* ---------- Terminal screenshot mockup ---------- */
+    .terminal {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #08090a;
+    }
+
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 14px;
+      background: #17181b;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .terminal-bar span {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .terminal-bar .dot-red { background: #ff5f57; }
+    .terminal-bar .dot-yellow { background: #febc2e; }
+    .terminal-bar .dot-green { background: #28c840; }
+
+    .terminal-body {
+      padding: 18px 20px;
+      overflow-x: auto;
+      color: #d8dde3;
+    }
+
+    .terminal-body pre {
+      margin: 0;
+      font-family: Menlo, 'DejaVu Sans Mono', Consolas, 'Courier New', monospace;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      white-space: pre;
+    }
+
     @media (max-width: 800px) {
       .project-box {
         flex-direction: column;
         align-items: center;
-        padding: 30px;
+        padding: 26px 22px;
       }
 
-      .project-left {
-        width: 60%;
-      }
+      .project-left { width: 100%; }
+      .project-right { width: 100%; }
 
-      .project-right {
-        width: 100%;
-        align-items: center; /* keep centered on mobile */
-      }
+      .deep-dive-card { padding: 22px 20px; }
 
-      .video-demo {
-        max-width: 80%;
-        height: 180px;
+      .terminal-body pre {
+        font-size: 0.68rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header>Coloretto</header>
 
-  <!-- Back button -->
   <button class="back-btn" onclick="window.location.href='index.html'">
     ← Back
   </button>
 
-  <!-- Project box -->
   <div class="project-box">
-    <!-- Left: Image + GitHub -->
     <div class="project-left">
       <img src="images/coloretto.jpg" alt="Coloretto preview" class="project-image">
       <button class="github-btn" onclick="window.open('https://github.com/sonali-shaw/coloretto', '_blank')">
@@ -195,7 +324,6 @@
       </button>
     </div>
 
-    <!-- Right: Description + Video -->
     <div class="project-right">
       <div class="project-desc">
         A fully playable, terminal-based implementation of Coloretto, the card-drafting board game — built from the ground up in Python with no game engine or framework, just the rules and a clean object model. Players draw from a shared pool of face-up stacks or take a stack outright, racing to build the highest-scoring hand across the full multi-round game, endgame trigger included.
@@ -208,11 +336,138 @@
         <li>Rich-formatted, ASCII-style terminal interface that makes card stacks and hands genuinely readable at a glance, not just a wall of text</li>
         <li>Defensive input validation throughout, so a mistyped command never corrupts game state</li>
       </ul>
+    </div>
+  </div>
 
-      <!-- Video placeholder -->
-      <div class="video-demo">
-        Video Demo Coming Soon!
+  <!-- ========== Technical Deep Dive ========== -->
+  <div class="deep-dive-eyebrow">Technical Deep Dive</div>
+  <div class="deep-dive-heading">How Coloretto Works</div>
+
+  <div class="deep-dive-card">
+    <div class="dd-block">
+      <div class="dd-subhead">Game Model</div>
+      <p>
+        Five small, focused modules instead of one monolithic script: <code>deck.py</code> tracks the card pool and
+        draw pile, <code>stack.py</code> models a single face-up pile with its own fill/take/reset logic,
+        <code>player.py</code> owns a hand and the scoring math, and <code>game.py</code> drives the turn loop —
+        drawing, placing, taking, and cycling whose turn it is — on top of those pieces. Because state lives on the
+        objects themselves rather than in loose global variables, the same classes could back a networked or GUI
+        version without rewriting the rules.
+      </p>
+    </div>
+
+    <div class="dd-block">
+      <div class="dd-subhead">A Custom Terminal Layout Engine</div>
+      <p>
+        The most interesting part isn't the game rules — it's <code>tile.py</code>, a small 2D grid-composition
+        system built specifically for this project. A <code>Tile</code> is just a 2D array of cells that knows how
+        to combine with another one: <code>add_left</code>, <code>add_below</code>, <code>mirror</code>, and
+        <code>padding</code> let the game compose player hands and card stacks into a single layout, positioned
+        around the table the way they'd sit at a real one (north/south/east/west), entirely at runtime from
+        however many players are in the game. Each cell renders as a <code>rich</code>-colored Unicode block, so
+        the finished table is genuinely colored terminal output, not plain text.
+      </p>
+    </div>
+
+    <div class="dd-block">
+      <div class="dd-subhead">Skills &amp; Technologies</div>
+      <div class="dd-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Object-Oriented Design</span>
+        <span class="tag">rich (terminal UI)</span>
+        <span class="tag">Custom Layout Algorithms</span>
+        <span class="tag">CLI Development</span>
       </div>
+    </div>
+
+    <div class="dd-block">
+      <div class="dd-subhead">Real Gameplay Transcript</div>
+      <p>An actual run of the program — not a mockup — captured directly from the terminal.</p>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="dot-red"></span><span class="dot-yellow"></span><span class="dot-green"></span>
+        </div>
+        <div class="terminal-body">
+<pre>  ____      _                _   _
+ <span style="color: #800080; text-decoration-color: #800080">/</span> ___|___ | | ___  _ __ ___| |_| |_ ___
+| |   <span style="color: #800080; text-decoration-color: #800080">/</span> _ \| |<span style="color: #800080; text-decoration-color: #800080">/</span> _ \| &#x27;__/ _ \ __| __/ _ \
+| |__| <span style="font-weight: bold">(</span>_<span style="font-weight: bold">)</span> | | <span style="font-weight: bold">(</span>_<span style="font-weight: bold">)</span> | | |  __/ |_| || <span style="font-weight: bold">(</span>_<span style="font-weight: bold">)</span> |
+ \____\___/|_|\___/|_|  \___|\__|\__\___/
+
+At any point, type <span style="font-weight: bold">(</span>q<span style="font-weight: bold">)</span> to quit, or <span style="font-weight: bold">(</span>h<span style="font-weight: bold">)</span> for help.
+Enter a number of players <span style="font-weight: bold">(</span><span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span>-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">4</span><span style="font-weight: bold">)</span> to start: <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span>
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span> player game started!
+------------------------------------------
+It is Player <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>&#x27;s turn!
+          <span style="color: #d75f00; text-decoration-color: #d75f00">█</span>
+
+          <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span> <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span> <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span>         <span style="color: #005fff; text-decoration-color: #005fff">█</span>
+
+Type d to draw, or t to take:  d
+You drew a <span style="color: #ffff00; text-decoration-color: #ffff00">█</span>
+Now, choose a stack <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span> to add the card to: <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>
+------------------------------------------
+It is Player <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span>&#x27;s turn!
+          <span style="color: #005fff; text-decoration-color: #005fff">█</span>
+
+          <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span> <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span> <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span>         <span style="color: #d75f00; text-decoration-color: #d75f00">█</span>
+          <span style="color: #ffff00; text-decoration-color: #ffff00">█</span>
+
+Type d to draw, or t to take:  d
+You drew a <span style="color: #87ffff; text-decoration-color: #87ffff">█</span> <span style="font-weight: bold">(</span>plus two<span style="font-weight: bold">)</span>
+Now, choose a stack <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span> to add the card to: <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span>
+------------------------------------------
+It is Player <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>&#x27;s turn!
+          <span style="color: #d75f00; text-decoration-color: #d75f00">█</span>
+
+          <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span> <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span> <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span>         <span style="color: #005fff; text-decoration-color: #005fff">█</span>
+          <span style="color: #ffff00; text-decoration-color: #ffff00">█</span> <span style="color: #87ffff; text-decoration-color: #87ffff">█</span>
+
+Type d to draw, or t to take:  d
+You drew a <span style="color: #005fff; text-decoration-color: #005fff">█</span>
+Now, choose a stack <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span> to add the card to: <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span>
+------------------------------------------
+It is Player <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span>&#x27;s turn!
+          <span style="color: #005fff; text-decoration-color: #005fff">█</span>
+
+          <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span> <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span> <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span>         <span style="color: #d75f00; text-decoration-color: #d75f00">█</span>
+          <span style="color: #ffff00; text-decoration-color: #ffff00">█</span> <span style="color: #87ffff; text-decoration-color: #87ffff">█</span> <span style="color: #005fff; text-decoration-color: #005fff">█</span>
+
+Type d to draw, or t to take:  d
+You drew a <span style="color: #005fff; text-decoration-color: #005fff">█</span>
+Now, choose a stack <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span> to add the card to: <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span>
+------------------------------------------
+It is Player <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>&#x27;s turn!
+          <span style="color: #d75f00; text-decoration-color: #d75f00">█</span>
+
+          <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span> <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span> <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span>         <span style="color: #005fff; text-decoration-color: #005fff">█</span>
+          <span style="color: #ffff00; text-decoration-color: #ffff00">█</span> <span style="color: #87ffff; text-decoration-color: #87ffff">█</span> <span style="color: #005fff; text-decoration-color: #005fff">█</span>
+            <span style="color: #005fff; text-decoration-color: #005fff">█</span>
+
+Type d to draw, or t to take:  d
+You drew a <span style="color: #008700; text-decoration-color: #008700">█</span>
+Now, choose a stack <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span> to add the card to: <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span>
+------------------------------------------
+It is Player <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2</span>&#x27;s turn!
+          <span style="color: #005fff; text-decoration-color: #005fff">█</span>
+
+          <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span> <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span> <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span>         <span style="color: #d75f00; text-decoration-color: #d75f00">█</span>
+          <span style="color: #ffff00; text-decoration-color: #ffff00">█</span> <span style="color: #87ffff; text-decoration-color: #87ffff">█</span> <span style="color: #005fff; text-decoration-color: #005fff">█</span>
+            <span style="color: #005fff; text-decoration-color: #005fff">█</span> <span style="color: #008700; text-decoration-color: #008700">█</span>
+
+Type d to draw, or t to take:  t
+Now, choose a stack <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>-<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3</span> to take: <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>
+------------------------------------------
+It is Player <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>&#x27;s turn!
+          <span style="color: #d75f00; text-decoration-color: #d75f00">█</span>
+
+          <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span> <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span> <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span>         <span style="color: #005fff; text-decoration-color: #005fff">█</span> <span style="color: #ffff00; text-decoration-color: #ffff00">█</span>
+          <span style="color: #a8a8a8; text-decoration-color: #a8a8a8">▬</span> <span style="color: #87ffff; text-decoration-color: #87ffff">█</span> <span style="color: #005fff; text-decoration-color: #005fff">█</span>
+            <span style="color: #005fff; text-decoration-color: #005fff">█</span> <span style="color: #008700; text-decoration-color: #008700">█</span>
+</pre>
+        </div>
+      </div>
+      <div class="dd-caption">A real two-player round — drawing, placing, and taking a stack, rendered live by the custom Tile layout engine</div>
     </div>
   </div>
 
