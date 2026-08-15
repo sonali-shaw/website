@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cross-Stitch Helper Project</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --accent: #6fd9bd;
+      --accent-soft: rgba(111, 217, 189, 0.14);
+      --bg-deep: #0b0d0f;
+      --bg-card: #1c1e22;
+      --text-dim: #9aa0a8;
+      --border: rgba(255, 255, 255, 0.07);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 40px 20px 70px;
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(ellipse 60% 40% at 15% 0%, rgba(111, 217, 189, 0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 100% 15%, rgba(120, 140, 220, 0.08) 0%, transparent 60%),
+        var(--bg-deep);
+      background-attachment: fixed;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .back-btn {
+      background: rgba(255, 255, 255, 0.06);
+      color: white;
+      border: 1px solid var(--border);
+      padding: 8px 20px;
+      border-radius: 999px;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 30px;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .project-box {
+      width: 90%;
+      max-width: 1000px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 36px 32px;
+      box-sizing: border-box;
+      border-radius: 18px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+      display: flex;
+      gap: 32px;
+    }
+
+    .project-left {
+      flex: 0 0 250px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .project-image {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      display: block;
+    }
+
+    .project-right {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .project-desc {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+      width: 100%;
+    }
+
+    .milestones {
+      width: 100%;
+      margin: 0;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .milestones li {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .milestones .done::marker { color: var(--accent); }
+    .milestones .next::marker { color: var(--text-dim); }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+      margin: 6px 0 -6px;
+    }
+
+    /* ---------- Technical Deep Dive ---------- */
+    .deep-dive-eyebrow {
+      width: 90%;
+      max-width: 1000px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 50px;
+    }
+
+    .deep-dive-heading {
+      width: 90%;
+      max-width: 1000px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    .deep-dive-card {
+      width: 90%;
+      max-width: 1000px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 32px;
+      box-sizing: border-box;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+      margin-top: 20px;
+    }
+
+    .dd-subhead {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0 0 10px;
+    }
+
+    .dd-block + .dd-block {
+      margin-top: 26px;
+      padding-top: 26px;
+      border-top: 1px solid var(--border);
+    }
+
+    .dd-block p {
+      font-size: 0.97rem;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.85);
+      margin: 0 0 10px;
+    }
+
+    .dd-block ul {
+      margin: 0;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .dd-block li {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .dd-block li::marker { color: var(--accent); }
+
+    .dd-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .dd-tags .tag {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(111, 217, 189, 0.22);
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+
+    @media (max-width: 800px) {
+      .project-box {
+        flex-direction: column;
+        align-items: center;
+        padding: 26px 22px;
+      }
+
+      .project-left { width: 100%; }
+      .project-right { width: 100%; }
+
+      .deep-dive-card { padding: 22px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>Cross-Stitch Helper</header>
+
+  <button class="back-btn" onclick="window.location.href='index.html'">
+    ← Back
+  </button>
+
+  <div class="project-box">
+    <div class="project-left">
+      <img src="images/cross-stitch-helper.jpeg" alt="Cross-Stitch Helper preview" class="project-image">
+    </div>
+
+    <div class="project-right">
+      <div class="project-desc">
+        A browser-based tool that turns any dropped photo into a real, stitchable cross-stitch chart — not a
+        blurred-out pixelation of the original, but a pattern built from a genuinely limited, k-means-derived thread
+        palette. Drop an image in and it's immediately gridded, quantized, and ready to work from: zoom into
+        printable sections, click any square to isolate its color across the whole piece, hand-edit individual
+        stitches, and export a numbered, section-lined chart as a PDF.
+      </div>
+
+      <div class="section-label">Milestones</div>
+      <ul class="milestones">
+        <li class="done">Drag-and-drop upload with a live, adjustable grid overlay</li>
+        <li class="done">K-means color quantization into a real, bounded thread palette</li>
+        <li class="done">Section View (zoom into printable chunks) and Manual Edit (hand-set any stitch)</li>
+        <li class="done">Per-color isolate, live recolor, and perceptually-capped color count</li>
+        <li class="done">Floyd–Steinberg dithering and a perceptual (redmean) color-mapping mode</li>
+        <li class="done">Numbered, section-lined PDF chart export with a full color legend</li>
+        <li class="next">DMC/Anchor thread-code matching against real embroidery floss lines</li>
+        <li class="next">Saving and reloading in-progress pattern projects</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ========== Technical Deep Dive ========== -->
+  <div class="deep-dive-eyebrow">Technical Deep Dive</div>
+  <div class="deep-dive-heading">How Cross-Stitch Helper Works</div>
+
+  <div class="deep-dive-card">
+    <div class="dd-block">
+      <div class="dd-subhead">Not Just Pixelation — K-Means Color Quantization</div>
+      <p>
+        Naive "pixelation" just averages the pixels in each grid cell and paints that exact average back — which
+        sounds like enough, but isn't: a photo has effectively unlimited gradation, so every cell can land on a
+        subtly different shade from its neighbor. That's fine for a mosaic effect, but it's useless for actual
+        cross-stitch, where you're buying a finite spool of floss colors and every square has to match one of them.
+      </p>
+      <p>
+        Instead, once each cell's average color is computed, the tool runs k-means clustering (with k-means++
+        weighted seeding, so starting centroids spread out instead of clumping) over every cell's color to find a
+        small set of representative clusters, then snaps each cell to its nearest cluster center. The output is a
+        real, bounded palette — the actual constraint of the craft — rather than an image that merely looks
+        blockier. The color-count slider itself is capped dynamically too: cell colors are converted to Lab space
+        and greedily grouped by CIE76 ΔE, so the maximum you can even ask for is however many colors a person could
+        actually tell apart in that specific photo, not an arbitrary number.
+      </p>
+    </div>
+
+    <div class="dd-block">
+      <div class="dd-subhead">Dithering &amp; Perceptual Color Matching</div>
+      <p>
+        An optional Floyd–Steinberg error-diffusion pass runs per grid cell rather than per pixel: each cell is
+        matched to its nearest palette color, and the resulting quantization error is spread to not-yet-visited
+        neighboring cells, softening hard transitions instead of every cell rounding independently. A serpentine
+        mode alternates scan direction each row to avoid directional streaking. Separately, a "perceptual" color-
+        mapping option swaps the default Euclidean RGB distance for a redmean-weighted distance — both for k-means
+        clustering and for matching each cell to its nearest color — which tracks human color perception more
+        closely than flat RGB distance.
+      </p>
+    </div>
+
+    <div class="dd-block">
+      <div class="dd-subhead">Section View, Manual Editing &amp; Isolate</div>
+      <p>
+        Large patterns are unreadable as one flat grid, so Section View splits the pattern into clickable,
+        printable chunks (size adjustable) that zoom to fill the canvas — the same chunking a printed cross-stitch
+        chart uses across multiple pages. Manual Edit, available only once zoomed into a section, lets you select
+        any single stitch and reassign it to an existing palette color or a brand-new one picked from a color
+        wheel. A small eye-slash icon next to each palette color isolates just that color across the whole pattern
+        (all other squares go blank) so you can trace exactly where one thread color is used.
+      </p>
+    </div>
+
+    <div class="dd-block">
+      <div class="dd-subhead">Export &amp; Practical Details</div>
+      <p>
+        "Export PDF" renders a dedicated, full-resolution version of the chart — every cell's color, a black grid,
+        bold black lines at each section boundary, and each cell's palette number for stitching by hand — and hands
+        it to the browser's native print dialog, where "Save as PDF" produces the file directly, with no external
+        PDF library involved. A live Pattern Data panel estimates floss skeins needed and a rough complexity rating,
+        and charts how many stitches use each color. Slider drags are debounced rather than regenerating the whole
+        pattern on every tick, since a full regeneration re-reads pixel data, reruns k-means, and repaints every
+        cell.
+      </p>
+    </div>
+
+    <div class="dd-block">
+      <div class="dd-subhead">Skills &amp; Technologies</div>
+      <div class="dd-tags">
+        <span class="tag">JavaScript (ES Modules)</span>
+        <span class="tag">HTML5 Canvas</span>
+        <span class="tag">K-Means Clustering</span>
+        <span class="tag">Color Science (Lab / ΔE, redmean)</span>
+        <span class="tag">Floyd–Steinberg Dithering</span>
+        <span class="tag">Print / PDF Generation</span>
+        <span class="tag">Responsive UI Design</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
