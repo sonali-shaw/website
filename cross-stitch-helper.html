@@ -94,6 +94,42 @@
       display: block;
     }
 
+    .github-btn {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.06);
+      color: white;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+      width: 100%;
+      text-align: center;
+    }
+
+    .github-btn:hover {
+      background-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .demo-btn {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: var(--accent);
+      color: #0b0d0f;
+      font-weight: 700;
+      transition: background-color 0.2s ease;
+      width: 100%;
+      text-align: center;
+    }
+
+    .demo-btn:hover {
+      background-color: #8ce4cd;
+    }
+
     .project-right {
       flex: 1;
       min-width: 0;
@@ -249,6 +285,12 @@
   <div class="project-box">
     <div class="project-left">
       <img src="images/cross-stitch-helper.jpeg" alt="Cross-Stitch Helper preview" class="project-image">
+      <button class="demo-btn" onclick="window.open('https://sonali-shaw.github.io/cross-stitch-helper/', '_blank')">
+        Try It Live
+      </button>
+      <button class="github-btn" onclick="window.open('https://github.com/sonali-shaw/cross-stitch-helper', '_blank')">
+        GitHub
+      </button>
     </div>
 
     <div class="project-right">
